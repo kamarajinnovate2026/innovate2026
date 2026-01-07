@@ -381,6 +381,104 @@ p {
   letter-spacing:1px;
 }
 
+  /* SECTION */
+#submit{
+  padding:80px 16px;
+  background:radial-gradient(circle at top,#1e3a8a,#020617);
+}
+
+/* GLASS CONTAINER */
+.glass{
+  max-width:800px;
+  margin:auto;
+  padding:32px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.18);
+  box-shadow:0 25px 60px rgba(0,0,0,.45);
+}
+
+/* TITLE */
+.glass h2{
+  text-align:center;
+  margin-bottom:22px;
+  font-size:26px;
+  background:linear-gradient(90deg,#38bdf8,#22c55e);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* FORM ELEMENTS */
+#paperForm input,
+#paperForm select{
+  width:100%;
+  padding:14px;
+  margin-bottom:14px;
+  border-radius:12px;
+  background:rgba(2,6,23,.85);
+  border:1px solid #334155;
+  color:#fff;
+  outline:none;
+  font-size:15px;
+}
+
+#paperForm input::placeholder{
+  color:#94a3b8;
+}
+
+#paperForm select option{
+  background:#020617;
+  color:#fff;
+}
+
+/* FILE INPUT */
+.dark-file{
+  padding:10px;
+}
+
+.dark-file::file-selector-button{
+  background:linear-gradient(90deg,#1e40af,#020617);
+  color:#fff;
+  border:none;
+  padding:10px 18px;
+  margin-right:10px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.3s;
+}
+
+.dark-file::file-selector-button:hover{
+  background:linear-gradient(90deg,#2563eb,#1e293b);
+}
+
+/* SUBMIT BUTTON */
+#paperForm button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:14px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  background:linear-gradient(90deg,#22c55e,#16a34a);
+  color:#fff;
+  transition:.3s ease;
+}
+
+#paperForm button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 25px rgba(34,197,94,.45);
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .glass{padding:24px}
+}
+
+
 @keyframes pulse{
   0%{transform:scale(1)}
   50%{transform:scale(1.05)}
@@ -1112,29 +1210,35 @@ with additional publication charges as per the willingness of the authors.
 
 <!-- SUBMISSION FORM -->
 <section id="submit">
-<div class="container">
-<h2>Paper Submission</h2>
-<form id="paperForm">
-<input name="author" placeholder="Corresponding Author Name" required>
-<select name="country" id="country" required></select>
-<select name="track" required>
-<option value="" disabled selected>Select Your Track</option>
-<option>Track 1 – Intelligent Electronics</option>
-<option>Track 2 – AI Power Engineering</option>
-<option>Track 3 – Robotics & Control</option>
-<option>Track 4 – Mechanical Systems</option>
-<option>Track 5 – Sustainable Engineering</option>
-</select>
-<input name="title" placeholder="Paper Title" required>
-<input name="institution" placeholder="Institution Name" required>
-<input type="email" name="email" placeholder="Email ID" required>
-<input name="whatsapp" placeholder="WhatsApp Number" required>
-<input type="file" name="paper" accept=".doc,.docx" required>
-<button>Submit Paper</button>
+  <div class="container glass">
+    <h2>Paper Submission</h2>
 
-</form>
-</div>
+    <form id="paperForm">
+      <input name="author" placeholder="Corresponding Author Name" required>
+
+      <select name="country" id="country" required></select>
+
+      <select name="track" required>
+        <option value="" disabled selected>Select Your Track</option>
+        <option>Track 1 – Intelligent Electronics</option>
+        <option>Track 2 – AI Power Engineering</option>
+        <option>Track 3 – Robotics & Control</option>
+        <option>Track 4 – Mechanical Systems</option>
+        <option>Track 5 – Sustainable Engineering</option>
+      </select>
+
+      <input name="title" placeholder="Paper Title" required>
+      <input name="institution" placeholder="Institution Name" required>
+      <input type="email" name="email" placeholder="Email ID" required>
+      <input name="whatsapp" placeholder="WhatsApp Number" required>
+
+      <input type="file" name="paper" class="dark-file" accept=".doc,.docx" required>
+
+      <button type="submit">Submit Paper</button>
+    </form>
+  </div>
 </section>
+
 
 <section id="sponsors">
 <div class="container">
@@ -1386,4 +1490,5 @@ setInterval(() => {
 
 </body>
 </html>
+
 
