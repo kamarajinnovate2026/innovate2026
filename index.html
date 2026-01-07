@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>INNOVATE 2026 – International Conference</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* Hamburger Menu */
+.menu-btn{
+  width:32px;
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.menu-btn span{
+  height:4px;
+  background:#fff;
+  border-radius:3px;
+}
+
+/* Side Menu */
+/* Side Menu - FIXED POSITION */
+.menu{
+  position:fixed;
+  top:70px;                 /* directly below header */
+  left:10px;                /* aligned with hamburger */
+  width:260px;
+  max-height:calc(100vh - 90px);
+  background:#020617;
+  padding:20px;
+  overflow-y:auto;          /* ENABLE SCROLL */
+  transform:scaleY(0);      /* CLOSED STATE */
+  transform-origin:top;
+  transition:0.3s ease;
+  z-index:999;
+  border-radius:12px;
+}
+
+/* Open State */
+.menu.open{
+  transform:scaleY(1);
+}
+
+.menu a{
+  display:block;
+  color:#fff;
+  text-decoration:none;
+  padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
+html{scroll-behavior:smooth}
+
+/* ===== HEADER ===== */
+header{
+  position:fixed;top:0;width:100%;
+  background:#020617;
+  z-index:1000;
+}
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 20px;
+}
+nav img{
+  width:60px;
+
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ===== SCROLL INFO ===== */
+.scroll-info{
+  background:linear-gradient(90deg,#22c55e,#38bdf8,#a855f7);
+  color:#000;font-weight:600;
+  overflow:hidden;
+}
+.scroll-info span{
+  display:inline-block;
+  padding-left:100%;
+  white-space:nowrap;
+  animation:scroll 20s linear infinite;
+}
+@keyframes scroll{to{transform:translateX(-100%)}}
+
+/* ===== BODY ===== */
+body{
+  padding-top:120px;
+  background:linear-gradient(120deg,#020617,#1e3a8a);
+  color:#fff;
+}
+
+/* ===== SECTIONS ===== */
+section{padding:80px 16px}
+.container{max-width:1200px;margin:auto}
+h2{text-align:center;margin-bottom:20px}
+
+/* ===== HERO ===== */
+.hero{text-align:center}
+.hero h1{
+  font-size:42px;
+  background:linear-gradient(90deg,#38bdf8,#22c55e);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* ===== GRID & CARD ===== */
+.grid{
+  display:grid;
+  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+}
+.card{
+  background:rgba(255,255,255,.08);
+  padding:20px;
+  border-radius:16px;
+}
+.card img{
+  width:100%;
+  border-radius:14px;
+  margin-bottom:10px;
+}
+
+/* ===== SLIDER ===== */
+.slider img{
+  width:100%;
+  border-radius:16px;
+}
+
+/* ===== FORM ===== */
+form input,form select{
+  width:100%;
+  padding:12px;
+  margin:8px 0;
+  border-radius:10px;
+  border:none;
+}
+form button{
+  padding:14px 30px;
+  border:none;
+  border-radius:30px;
+  background:#22c55e;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* ===== CONTACT ===== */
+.contact-list{
+  list-style:none;
+  display:grid;
+  gap:12px;
+  max-width:400px;
+  margin:auto;
+}
+.contact-list li{
+  background:rgba(255,255,255,.1);
+  padding:14px;
+  border-radius:14px;
+  text-align:center;
+}
+
+/* ===== WHATSAPP ===== */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:#fff;
+  width:55px;height:55px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:26px;
+  text-decoration:none;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  padding:20px;
+  background:#020617;
+}
+
+/* IMPORTANT DATES TIMELINE */
+.timeline{
+  position:relative;
+  margin:40px auto;
+  max-width:700px;
+  padding-left:20px;
+}
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:8px;
+  top:0;
+  width:3px;
+  height:100%;
+  background:linear-gradient(#38bdf8,#22c55e);
+}
+.timeline-item{
+  margin-bottom:30px;
+  padding-left:30px;
+}
+.timeline-dot{
+  position:absolute;
+  left:0;
+  width:18px;
+  height:18px;
+  background:#22c55e;
+  border-radius:50%;
+  box-shadow:0 0 10px #22c55e;
+}
+.timeline-item h4{
+  margin-bottom:6px;
+}
+.timeline-item span{
+  color:#38bdf8;
+  font-weight:600;
+}
+
+/* CONFERENCE FEE TABLE */
+.fee-table{
+  width:100%;
+  max-width:700px;
+  margin:30px auto;
+  border-collapse:collapse;
+  overflow:hidden;
+  border-radius:12px;
+}
+.fee-table th,
+.fee-table td{
+  padding:14px;
+  text-align:center;
+}
+.fee-table th{
+  background:linear-gradient(90deg,#22c55e,#38bdf8);
+  color:#000;
+}
+.fee-table tr{
+  background:rgba(255,255,255,0.08);
+}
+.fee-table tr:nth-child(even){
+  background:rgba(255,255,255,0.12);
+}
+.fee-note{
+  text-align:center;
+  margin-top:15px;
+  font-size:14px;
+  color:#ddd;
+}
+
+p {
+            text-align: justify;
+            text-justify: inter-word; 
+        }
+
+/* ===== FULL PAGE LOADER OVERLAY ===== */
+#pageLoader{
+  position:fixed;
+  top:0; left:0;
+  width:100vw;
+  height:100vh;
+  background:rgba(2,6,23,0.95);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  z-index:5000;
+}
+
+/* Spinner */
+.loader-circle{
+  width:70px;
+  height:70px;
+  border:6px solid rgba(255,255,255,0.2);
+  border-top:6px solid #38bdf8;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+  margin-bottom:20px;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
+.loader-text{
+  font-size:16px;
+  font-weight:600;
+  color:#22c55e;
+  letter-spacing:0.5px;
+}
+
+/* ===== VISION & MISSION SECTION ===== */
+.vm-wrapper{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+  margin:40px 0;
+}
+
+.vm-box{
+  background:rgba(255,255,255,0.08);
+  border-radius:18px;
+  padding:30px 25px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.vm-box::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:6px;
+  background:linear-gradient(90deg,#38bdf8,#22c55e);
+}
+
+.vm-icon{
+  font-size:40px;
+  margin-bottom:15px;
+}
+
+.vm-box h3{
+  margin-bottom:15px;
+  font-size:22px;
+  background:linear-gradient(90deg,#38bdf8,#22c55e);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.vm-box p{
+  font-size:15px;
+  line-height:1.7;
+  color:#e5e7eb;
+  text-align:center;
+}
+
+/* ===== PREMIUM COUNTDOWN ===== */
+.countdown-wrapper{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.count-box{
+  width:120px;
+  height:120px;
+  background:linear-gradient(145deg,#020617,#1e3a8a);
+  border-radius:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  box-shadow:
+    0 0 20px rgba(56,189,248,0.4),
+    inset 0 0 15px rgba(34,197,94,0.3);
+  animation:pulse 2s infinite;
+}
+
+.count-box span{
+  font-size:38px;
+  font-weight:700;
+  background:linear-gradient(90deg,#38bdf8,#22c55e);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.count-box small{
+  margin-top:6px;
+  font-size:14px;
+  color:#e5e7eb;
+  letter-spacing:1px;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+  100%{transform:scale(1)}
+}
+
+/* Mobile Responsive */
+@media(max-width:600px){
+  .count-box{
+    width:90px;
+    height:90px;
+  }
+  .count-box span{
+    font-size:26px;
+  }
+}
+
+/* ===== SIMPLE AUTO SLIDER ===== */
+.inst-slider{
+  max-width:500px;
+  margin:40px auto;
+  overflow:hidden;
+  border-radius:18px;
+  background:#000;
+}
+
+.inst-slider-track{
+  display:flex;
+  animation:slide 18s infinite ease-in-out;
+}
+
+.inst-slider-track img{
+  width:100%;
+  height:300px;
+  object-fit:fill;   /* ✅ NO STRETCH, NO CROP */
+  background:#000;
+  flex-shrink:0;
+}
+
+/* Smooth auto movement */
+@keyframes slide{
+  0%   {transform:translateX(0)}
+  25%  {transform:translateX(0)}
+  30%  {transform:translateX(-100%)}
+  50%  {transform:translateX(-100%)}
+  55%  {transform:translateX(-200%)}
+  75%  {transform:translateX(-200%)}
+  80%  {transform:translateX(-300%)}
+  100% {transform:translateX(-300%)}
+}
+
+/* Mobile */
+@media(max-width:768px){
+  .inst-slider-track img{
+    height:220px;
+  }
+}
+
+/* ===== GLOW UNDERLINE FOR HEADINGS ===== */
+h2{
+  position:relative;
+}
+
+h2::after{
+  content:"";
+  display:block;
+  width:80px;
+  height:4px;
+  margin:12px auto 0;
+  background:linear-gradient(90deg,#38bdf8,#22c55e);
+  border-radius:10px;
+  box-shadow:0 0 15px rgba(56,189,248,0.8);
+  animation:underlineGlow 2s infinite alternate;
+}
+
+@keyframes underlineGlow{
+  from{box-shadow:0 0 10px #38bdf8;}
+  to{box-shadow:0 0 25px #22c55e;}
+}
+
+/* ===== CARD HOVER GLOW EFFECT ===== */
+.card{
+  transition:all 0.4s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+/* ===== CARD HOVER GLOW EFFECT (FIXED) ===== */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent,#38bdf8,transparent);
+  opacity:0;
+  transition:0.4s;
+  pointer-events:none;   /* ✅ THIS FIXES BUTTON CLICK */
+}
+
+.card button{
+  position:relative;
+  z-index:2;
+}
+
+.card:hover::before{
+  opacity:0.25;
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.02);
+  box-shadow:
+    0 0 20px rgba(56,189,248,0.6),
+    0 0 40px rgba(34,197,94,0.4);
+}
+
+/* ===== IMAGE ZOOM + SOFT GLOW ===== */
+.card img{
+  transition:0.5s ease;
+}
+
+.card:hover img{
+  transform:scale(1.08);
+  filter:drop-shadow(0 0 10px rgba(56,189,248,0.7));
+}
+
+/* ===== BUTTON GLOW ON HOVER ===== */
+button:hover{
+  box-shadow:
+    0 0 15px rgba(56,189,248,0.8),
+    0 0 30px rgba(34,197,94,0.6);
+  transform:scale(1.05);
+}
+
+/* ===== NAV MENU LINK GLOW ===== */
+.menu a:hover{
+  color:#38bdf8;
+  text-shadow:0 0 10px #38bdf8;
+}
+
+/* ===============================
+   DOWNLOAD BROCHURE BUTTON GLOW
+================================ */
+a[download]{
+  transition:all 0.4s ease;
+  box-shadow:0 0 0 transparent;
+}
+
+a[download]:hover{
+  box-shadow:
+    0 0 15px rgba(56,189,248,0.8),
+    0 0 35px rgba(34,197,94,0.6);
+  transform:translateY(-3px) scale(1.05);
+}
+
+
+/* ===============================
+   VISION & MISSION CARD GLOW
+================================ */
+.vm-box{
+  transition:all 0.4s ease;
+}
+
+.vm-box:hover{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:
+    0 0 25px rgba(56,189,248,0.6),
+    0 0 45px rgba(34,197,94,0.4);
+}
+
+
+/* ===============================
+   CONFERENCE FEE TABLE GLOW
+================================ */
+.fee-table{
+  transition:0.4s ease;
+}
+
+.fee-table:hover{
+  box-shadow:
+    0 0 30px rgba(56,189,248,0.6),
+    0 0 50px rgba(34,197,94,0.4);
+}
+
+
+/* ===============================
+   CONTACT CARD GLOW
+================================ */
+.contact-list li{
+  transition:all 0.35s ease;
+}
+
+.contact-list li:hover{
+  transform:translateY(-5px) scale(1.03);
+  box-shadow:
+    0 0 20px rgba(56,189,248,0.6),
+    0 0 35px rgba(34,197,94,0.4);
+}
+
+
+/* ===============================
+   PAPER SUBMISSION – NEAT & PREMIUM
+================================ */
+#submit form{
+  background:rgba(255,255,255,0.06);
+  padding:30px;
+  border-radius:20px;
+  box-shadow:
+    inset 0 0 20px rgba(56,189,248,0.15),
+    0 0 30px rgba(34,197,94,0.2);
+  transition:0.4s ease;
+}
+
+#submit form:hover{
+  box-shadow:
+    0 0 30px rgba(56,189,248,0.6),
+    0 0 50px rgba(34,197,94,0.4);
+}
+
+
+/* INPUT FOCUS GLOW */
+#submit input,
+#submit select{
+  background:rgba(255,255,255,0.85);
+  transition:0.3s ease;
+}
+
+#submit input:focus,
+#submit select:focus{
+  outline:none;
+  box-shadow:
+    0 0 12px rgba(56,189,248,0.9);
+}
+
+
+/* SUBMIT BUTTON PREMIUM GLOW */
+#submit button{
+  transition:0.4s ease;
+}
+
+#submit button:hover{
+  transform:scale(1.08);
+  box-shadow:
+    0 0 20px rgba(56,189,248,0.9),
+    0 0 40px rgba(34,197,94,0.7);
+}
+
+/* ===============================
+   LIVE WHATSAPP FLOATING BUTTON
+================================ */
+.whatsapp-live{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:60px;
+  height:60px;
+  background:#25D366;
+  color:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  text-decoration:none;
+  z-index:9999;
+  animation:whatsappPulse 1.6s infinite;
+  box-shadow:0 0 20px rgba(37,211,102,0.8);
+  transition:0.3s ease;
+}
+
+/* Hover Glow */
+.whatsapp-live:hover{
+  transform:scale(1.15);
+  box-shadow:
+    0 0 25px rgba(37,211,102,1),
+    0 0 50px rgba(37,211,102,0.8);
+}
+
+/* Pulse Animation */
+@keyframes whatsappPulse{
+  0%{
+    box-shadow:0 0 0 0 rgba(37,211,102,0.7);
+  }
+  70%{
+    box-shadow:0 0 0 20px rgba(37,211,102,0);
+  }
+  100%{
+    box-shadow:0 0 0 0 rgba(37,211,102,0);
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+    <!-- Hamburger Menu Button -->
+<div class="menu-btn" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<strong>INNOVATE 2026</strong>
+</nav>
+
+<div class="scroll-info">
+<span>
+📢 Paper Submission Deadline: 15 March 2026 | Conference Date: 24 April 2026 |
+Publication: Scopus / Springer Lecture Notes
+</span>
+</div>
+</header>
+
+<!-- Side Menu -->
+<div class="menu" id="menu">
+  <a href="#home" onclick="toggleMenu()">Home</a>
+  <a href="#institution" onclick="toggleMenu()">About Institution</a>
+  <a href="#conference" onclick="toggleMenu()">About Conference</a>
+  <a href="#keynote" onclick="toggleMenu()">Keynote Speakers</a>
+  <a href="#tracks" onclick="toggleMenu()">Conference Tracks</a>
+  <a href="#committee" onclick="toggleMenu()">Committee</a>
+  <a href="#dates" onclick="toggleMenu()">Important Dates</a>
+  <a href="#fee" onclick="toggleMenu()">Conference Fee</a>
+  <a href="#guidelines" onclick="toggleMenu()">Guidelines</a>
+  <a href="#publication" onclick="toggleMenu()">Publication</a>
+  <a href="#submit" onclick="toggleMenu()">Paper Submission</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="images/brochure.pdf" download>Download Brochure</a>
+</div>
+
+<a class="whatsapp-live"
+   href="https://wa.me/919788569886?text=Hello%20INNOVATE%202026%20Team,%20I%20need%20information%20about%20paper%20submission."
+   target="_blank"
+   title="Chat with us on WhatsApp">
+  💬
+</a>
+
+
+<!-- HERO -->
+<section id="home" class="hero">
+<h2><b>Kamaraj College of Engineering and Technology<br><center>(An Autonomous Institution)</center></b></h2>
+Organizes<br>
+<h1>International Conference on AI-Driven Intelligent Systems<br>and Sustainable Engineering Technologies</h1>
+<br>24 April 2026 | Hybrid Mode
+</section>
+
+<section style="padding:40px 16px">
+<div class="container">
+
+<h2 style="text-align:center;margin-bottom:25px">
+Conference Countdown
+</h2>
+
+<div class="countdown-wrapper">
+
+  <div class="count-box">
+    <span id="cd-days">00</span>
+    <small>Days</small>
+  </div>
+
+  <div class="count-box">
+    <span id="cd-hours">00</span>
+    <small>Hours</small>
+  </div>
+
+  <div class="count-box">
+    <span id="cd-minutes">00</span>
+    <small>Minutes</small>
+  </div>
+
+  <div class="count-box">
+    <span id="cd-seconds">00</span>
+    <small>Seconds</small>
+  </div>
+
+</div>
+
+</div>
+</section>
+
+<div style="margin-top:20px">
+  <center>
+  <a href="images/brochure.pdf" download
+     style="
+       display:inline-block;
+       padding:14px 28px;
+       background:linear-gradient(90deg,#22c55e,#38bdf8);
+       color:#000;
+       font-weight:600;
+       border-radius:30px;
+       text-decoration:none;
+     ">
+    Download Conference Brochure
+  </a></center>
+</div>
+
+<!-- ABOUT INSTITUTION -->
+<section id="institution">
+<div class="container">
+<h2>About the Institution</h2>
+<p>Our college was established in the year 1998. 
+It is promoted and supported by Virudhunagar Hindu Nadar's Devasthanam, various Hindu Nadar's Mahamai Tharappus in Virudhunagar and other places and educational institutions of Virudhunagar. 
+Our college is ideally located on the home land of Karmaveerar "Bharat Ratna" K. Kamaraj and our institution is one of the Virudhunagar's most recognizable landmark. 
+Presently, Our College spans to 47.92 acres of land. 
+This Institution has been approved by All India Council for Technical Education (AICTE), New Delhi and affiliated to Anna University. 
+The college offers 9 UG and 5 PG programmes. ECE, EEE, CSE, IT, Mechanical, Mechatronics, Bio-Technology Departments are accredited by National Board of Accreditation, New Delhi. 
+The College was conferred Autonomous status for the period of 10 years from 2020-2030 by University Grants Commission, New Delhi. 
+Our institution is accredited by NAAC with "A" grade. Our institution is selected in a promising under ATAL ranking of Institutions in Innovation Achievement (ARIIA) ranking under private institution by Ministry of Education, Government of India. 
+Our college is awarded as the Best Engineering College in South India for Industry Interface by Centre for Research and Education Growth (CEGR), New Delhi. 
+In Career 360 Magazine Survey, our college got AAA ranking.</p><br><br>
+
+<!-- INSTITUTION IMAGE SLIDER -->
+<div class="inst-slider">
+  <div class="inst-slider-track">
+    <img src="images/college1.jpg">
+    <img src="images/college2.jpg">
+    <img src="images/college3.jpg">
+    <img src="images/college4.jpg">
+  </div>
+</div>
+
+<h2>Vision & Mission</h2>
+
+<div class="vm-wrapper">
+
+  <div class="vm-box">
+    <div class="vm-icon">🌟</div>
+    <h3>Our Vision</h3>
+    <p>
+      To make this Institution unique of its kind in the field of
+      research and development activities in this part of the world.
+    </p>
+  </div>
+
+  <div class="vm-box">
+    <div class="vm-icon">🎯</div>
+    <h3>Our Mission</h3>
+    <p>
+      To impart highly innovative and technical knowledge to urban
+      and unreachable rural student communities through
+      <b>Total Quality Education</b>.
+    </p>
+  </div>
+
+</div>
+
+<iframe src="https://www.google.com/maps?q=Kamaraj%20College%20of%20Engineering%20and%20Technology&output=embed"
+width="100%" height="300" style="border:0;border-radius:16px"></iframe>
+</div>
+</section>
+
+<!-- ABOUT CONFERENCE -->
+<section id="conference">
+<div class="container">
+<h2>About the Conference</h2>
+<p>
+INNOVATE 2026 brings together researchers, academicians and industry professionals to present AI-driven intelligent systems and sustainable engineering technologies.
+The International Conference on AI-Driven Intelligent Systems and Sustainable Engineering Technologies brings together researchers, academicians, industry professionals, and innovators from around the world. 
+The conference serves as a premier platform to present and discuss recent advancements in artificial intelligence–enabled engineering solutions. It focuses on the integration of intelligent systems with sustainable and green engineering practices. 
+The event encourages interdisciplinary research across Electrical, Electronics, Communication and Mechanical Engineering domains.
+</p>
+</div>
+</section>
+
+<!-- KEYNOTE -->
+<section id="keynote">
+<div class="container">
+<h2>Keynote Speakers</h2>
+<div class="grid">
+<div class="card"><img src="images/keynote1.jpg"><center>Dr. T. P. D. Rajan<br>CSIR-NIIST, India</center></div>
+<div class="card"><img src="images/keynote2.jpeg"><center>Dr. Reshmy Krishnan<br>Muscat College</center></div>
+<div class="card"><img src="images/keynote3.jpg"><center>Ts. Dr. Muhammad Ammirrul Atiqi<br>UKM, Malaysia</center></div>
+<div class="card"><img src="images/keynote4.jpg"><center>Prof. Dr. Margarita Perez<br>Spain</center></div>
+</div>
+</div>
+</section>
+
+<!-- TRACKS -->
+<section id="tracks">
+<div class="container">
+<h2>Conference Tracks</h2>
+<div class="grid">
+<div class="card">
+  <img src="images/track1.jpg">
+  <center>
+    <b>Track 1</b><br>
+    Intelligent Electronics & Communication Systems
+  </center>
+
+  <center><button onclick="showTrack(1)"
+    style="
+      margin-top:12px;
+      padding:8px 18px;
+      border:none;
+      border-radius:20px;
+      background:#38bdf8;
+      font-weight:600;
+      cursor:pointer;
+    ">
+    View Topics
+  </button></center>
+</div>
+
+<div class="card">
+  <img src="images/track2.avif">
+  <center>
+    <b>Track 2</b><br>
+    AI-Driven Electrical & Power Engineering
+  </center>
+
+  <center><button onclick="showTrack(2)"
+    style="
+      margin-top:12px;
+      padding:8px 18px;
+      border:none;
+      border-radius:20px;
+      background:#38bdf8;
+      font-weight:600;
+      cursor:pointer;
+    ">
+    View Topics
+  </button></center>
+</div>
+
+<div class="card">
+  <img src="images/track3.jpg">
+  <center>
+    <b>Track 3</b><br>
+    AI in Control Systems & Robotics
+  </center>
+
+  <center><button onclick="showTrack(3)"
+    style="
+      margin-top:12px;
+      padding:8px 18px;
+      border:none;
+      border-radius:20px;
+      background:#38bdf8;
+      font-weight:600;
+      cursor:pointer;
+    ">
+    View Topics
+  </button></center>
+</div>
+
+<div class="card">
+  <img src="images/track4.avif">
+  <center>
+    <b>Track 4</b><br>
+    AI-Enabled Mechanical & Manufacturing Systems
+  </center>
+
+  <center><button onclick="showTrack(4)"
+    style="
+      margin-top:12px;
+      padding:8px 18px;
+      border:none;
+      border-radius:20px;
+      background:#38bdf8;
+      font-weight:600;
+      cursor:pointer;
+    ">
+    View Topics
+  </button></center>
+</div>
+
+<div class="card">
+  <img src="images/track5.jpg">
+  <center>
+    <b>Track 5</b><br>
+    Sustainable Engineering & Green Technologies
+  </center>
+
+  <center><button onclick="showTrack(5)"
+    style="
+      margin-top:12px;
+      padding:8px 18px;
+      border:none;
+      border-radius:20px;
+      background:#38bdf8;
+      font-weight:600;
+      cursor:pointer;
+    ">
+    View Topics
+  </button></center>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- COMMITTEE -->
+<section id="committee">
+<div class="container">
+<h2>Organizing Committee</h2>
+<div class="grid">
+<div class="card"><center>Dr. R. Suresh Babu</center></div>
+<div class="card"><center>Dr. D. Prince Winston</center></div>
+<div class="card"><center>Dr. S. Thanga Kasi Rajan</center></div>
+</div>
+
+<h2 style="margin-top:40px">Technical Committee</h2>
+<div class="grid">
+<div class="card"><center>Dr. Anand Anbalagan</center></div>
+<div class="card"><center>Tomonobu Senjyu</center></div>
+<div class="card"><center>Dr. Akhtar Kalam</center></div>
+<div class="card"><center>Dr. Nnamdi Nwulu</center></div>
+</div>
+</div>
+</section>
+
+<!-- IMPORTANT DATES -->
+<section id="dates">
+<div class="container">
+<h2>Important Dates</h2>
+
+<div class="timeline">
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <h4>Full Paper Submission</h4>
+    <span>March 15, 2026</span>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <h4>Paper Acceptance Notification</h4>
+    <span>March 30, 2026</span>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <h4>Registration Last Date</h4>
+    <span>April 12, 2026</span>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-dot"></div>
+    <h4>Conference Date (Hybrid Mode)</h4>
+    <span>April 24, 2026</span>
+  </div>
+
+</div>
+</div>
+</section>
+
+<!-- CONFERENCE FEE -->
+<section id="fee">
+<div class="container">
+<h2>Conference Fee</h2>
+
+<table class="fee-table">
+  <tr>
+    <th>Category</th>
+    <th>Fee</th>
+  </tr>
+  <tr>
+    <td>Students / Research Scholars / Faculty / Industry Professionals</td>
+    <td><b>₹ 1000</b></td>
+  </tr>
+  <tr>
+    <td>Listeners</td>
+    <td><b>₹ 500</b></td>
+  </tr>
+</table>
+
+<p class="fee-note">
+Additional <b>₹ 500</b> will be charged for extra authors participating in
+<b>Physical Mode</b>.
+</p>
+
+</div>
+</section>
+
+
+<!-- GUIDELINES -->
+<section id="guidelines">
+<div class="container">
+<h2>Author Guidelines</h2>
+
+<div class="card">
+<ul style="line-height:1.8; padding-left:20px">
+  <li>All submitted papers must be <b>original, unpublished</b> and not under consideration elsewhere.</li>
+  <li>Manuscripts must be prepared strictly in accordance with the
+      <b>IEEE two-column conference format</b>.</li>
+  <li>The length of the manuscript should <b>not exceed six pages</b>
+      including references.</li>
+  <li>Papers must comply with plagiarism standards with a
+      <b>similarity index below 10%</b>.</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<!-- PUBLICATION -->
+<section id="publication">
+<div class="container">
+<h2>Publication</h2>
+
+<div class="card">
+<p>
+All <b>accepted and presented papers</b> will be published in
+<b>Scopus indexed / Springer Lecture Notes</b>
+with additional publication charges as per the willingness of the authors.
+</p>
+</div>
+
+</div>
+</section>
+
+<div style="margin-top:20px">
+  <center>
+  <a href="images/conference-template-a4.docx" download
+     style="
+       display:inline-block;
+       padding:14px 28px;
+       background:linear-gradient(90deg,#22c55e,#38bdf8);
+       color:#000;
+       font-weight:600;
+       border-radius:30px;
+       text-decoration:none;
+     ">
+    Download Paper Template
+  </a></center>
+</div>
+
+<!-- SUBMISSION FORM -->
+<section id="submit">
+<div class="container">
+<h2>Paper Submission</h2>
+<form id="paperForm">
+<input name="author" placeholder="Corresponding Author Name" required>
+<select name="country" id="country" required></select>
+<select name="track" required>
+<option value="" disabled selected>Select Your Track</option>
+<option>Track 1 – Intelligent Electronics</option>
+<option>Track 2 – AI Power Engineering</option>
+<option>Track 3 – Robotics & Control</option>
+<option>Track 4 – Mechanical Systems</option>
+<option>Track 5 – Sustainable Engineering</option>
+</select>
+<input name="title" placeholder="Paper Title" required>
+<input name="institution" placeholder="Institution Name" required>
+<input type="email" name="email" placeholder="Email ID" required>
+<input name="whatsapp" placeholder="WhatsApp Number" required>
+<input type="file" name="paper" accept=".doc,.docx" required>
+<button>Submit Paper</button>
+
+</form>
+</div>
+</section>
+
+<section id="sponsors">
+<div class="container">
+<h2>Our Sponsors</h2>
+
+<div class="grid" style="max-width:700px;margin:auto">
+  <div class="card" style="text-align:center">
+    <img src="images/sponsor1.png" style="max-width:180px">
+    <h4>IETE</h4>
+  </div>
+
+  <div class="card" style="text-align:center">
+    <img src="images/sponsor2.png" style="max-width:180px">
+    <h4>ISTE</h4>
+  </div>
+</div>
+
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<div class="container">
+<h2>Contact</h2>
+<ul class="contact-list">
+<li>📍 Kamaraj College of Engineering and Technology</li>
+<li>📧 innovate@kamarajcollege.edu.in</li>
+<li>📞 +91 97885 69886</li>
+</ul>
+</div>
+</section>
+
+<footer>© 2026 INNOVATE Conference</footer>
+
+<script>
+/* SLIDESHOW */
+const slides=["college1.jpg","college2.jpg","college3.jpg"];
+let i=0;
+setInterval(()=>{
+ document.getElementById("collegeSlide").src="images/"+slides[i++%slides.length];
+},3000);
+
+/* COUNTRY LIST */
+const c=document.getElementById("country");
+const dn = new Intl.DisplayNames(["en"], { type: "region" });
+c.innerHTML = `<option value="" disabled selected>Select Your Country</option>`;
+for(let a=65;a<=90;a++){
+ for(let b=65;b<=90;b++){
+  try{
+   const code=String.fromCharCode(a)+String.fromCharCode(b);
+   const name=dn.of(code);
+   if(name && !name.includes(code)) c.innerHTML+=`<option>${name}</option>`;
+  }catch(e){}
+ }
+}
+
+/* PAPER ID */
+function genID(){return "INN-2026-"+Math.floor(1000+Math.random()*9000)}
+
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbzvbOe943GNWnVaaeZdc3gp_UunMvC3UUp_rDUwvIembFVvV_FAGDRmVgt6bpc1gQM6SQ/exec";
+
+document.getElementById("paperForm").addEventListener("submit", e => {
+  e.preventDefault();
+
+  const form = e.target;
+  const file = form.paper.files[0];
+  const pageLoader = document.getElementById("pageLoader");
+  pageLoader.style.display = "flex";
+
+  const pid = genID();
+  const reader = new FileReader();
+
+  reader.onload = () => {
+    fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        paperID: pid,
+        author: form.author.value,
+        country: form.country.value,
+        track: form.track.value,
+        title: form.title.value,
+        institution: form.institution.value,
+        email: form.email.value,
+        whatsapp: form.whatsapp.value,
+        fileName: file.name,
+        mimeType: file.type,
+        file: reader.result.split(",")[1]
+      })
+    })
+    .then(() => {
+      pageLoader.style.display = "none";
+      alert(
+        "Submission Successful!\n\n" +
+        "Your Paper ID: " + pid + "\n\n" +
+        "Please save this Paper ID for future communication."
+      );
+      form.reset(); // CLEAR FORM
+    })
+    .catch(() => {
+      pageLoader.style.display = "none";
+      alert("Submission failed. Please try again.");
+    });
+  };
+
+  reader.readAsDataURL(file);
+});
+
+</script>
+<script>
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("open");
+}
+</script>
+
+<!-- FULL PAGE LOADER -->
+<div id="pageLoader">
+  <div class="loader-circle"></div>
+  <div class="loader-text">Submitting your paper...</div>
+</div>
+
+<div id="trackModal" style="
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100vw;height:100vh;
+  background:rgba(0,0,0,0.85);
+  z-index:6000;
+  padding:40px;
+  overflow:auto;
+">
+
+<div style="
+  max-width:700px;
+  margin:auto;
+  background:#020617;
+  padding:30px;
+  border-radius:18px;
+">
+
+<h3 id="trackTitle"></h3>
+<ul id="trackList" style="line-height:1.8"></ul>
+
+<div style="text-align:center;margin-top:20px">
+  <button onclick="closeTrack()"
+    style="padding:10px 24px;border:none;border-radius:20px;background:#22c55e;font-weight:600">
+    Close
+  </button>
+</div>
+
+</div>
+</div>
+
+<script>
+const tracks = {
+  1: {
+    title:"Track 1 – Intelligent Electronics & Communication Systems",
+    topics:[
+      "AI-Based Wireless Communication and 5G/6G Technologies",
+      "Intelligent Antenna Design and RF Systems for Sustainable Communications",
+      "Machine Learning in Signal, Image & Video Processing",
+      "AI-Enabled IoT and Embedded Systems",
+      "Intelligent VLSI Design and Low-Power Electronics",
+      "Edge AI and Sustainable Communication Networks"
+    ]
+  },
+  2: {
+    title:"Track 2 – AI-Driven Electrical & Power Engineering",
+    topics:[
+      "Artificial Intelligence in Power System Operation and Control",
+"Smart Grids, Microgrids, and AI-Based Energy Management",
+"Renewable Energy Forecasting Using Machine Learning",
+"AI Techniques in Electrical Machines and Drives",
+"Intelligent Power Electronics and Converter Design",
+"Electric Vehicles, Charging Infrastructure and Battery Management Systems"
+    ]
+  },
+  3: {
+    title:"Track 3 – AI in Control Systems & Robotics",
+    topics:[
+      "Intelligent Control Systems and Adaptive Controllers",
+"AI-Based Robotics and Autonomous Systems",
+"Human–Machine Interaction and Smart Automation",
+"AI in Industrial Automation and Smart Manufacturing"
+    ]
+  },
+  4: {
+    title:"Track 4 – AI-Enabled Mechanical & Manufacturing Systems",
+    topics:[
+      "AI-Driven Smart Manufacturing and Industry 4.0",
+"Intelligent Design, Modeling and Simulation of Mechanical Systems",
+"Machine Learning for Predictive Maintenance and Condition Monitoring",
+"AI in Additive Manufacturing and Advanced Materials"
+    ]
+  },
+  5: {
+    title:"Track 5 – Sustainable Engineering & Green Technologies",
+    topics:[
+      "AI for Sustainable Development and Climate Solutions",
+"Energy-Efficient Systems and Green Computing",
+"Intelligent Transportation Systems and Smart Mobility",
+"Sustainable Materials and Structural Health Monitoring",
+"AI-Based Waste Management and Circular Economy"
+    ]
+  }
+};
+
+function showTrack(n){
+  document.getElementById("trackTitle").innerText = tracks[n].title;
+  const ul=document.getElementById("trackList");
+  ul.innerHTML="";
+  tracks[n].topics.forEach(t=>{
+    ul.innerHTML+=`<li>${t}</li>`;
+  });
+  document.getElementById("trackModal").style.display="block";
+}
+
+function closeTrack(){
+  document.getElementById("trackModal").style.display="none";
+}
+</script>
+
+<script>
+const eventDate = new Date("April 24, 2026 09:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const diff = eventDate - now;
+
+  if (diff <= 0) {
+    document.querySelector(".countdown-wrapper").innerHTML =
+      "<h3 style='color:#22c55e'>🎉 Conference Started!</h3>";
+    return;
+  }
+
+  document.getElementById("cd-days").innerText =
+    Math.floor(diff / (1000 * 60 * 60 * 24));
+
+  document.getElementById("cd-hours").innerText =
+    Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+  document.getElementById("cd-minutes").innerText =
+    Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+  document.getElementById("cd-seconds").innerText =
+    Math.floor((diff % (1000 * 60)) / 1000);
+}, 1000);
+</script>
+
+</body>
+</html>
