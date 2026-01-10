@@ -426,7 +426,7 @@ p {
   border-radius:12px;
   background:rgba(2,6,23,.85);
   border:1px solid #334155;
-  color#020617;
+  color: #020617;
   outline:none;
   font-size:15px;
 }
@@ -812,7 +812,7 @@ Publication: Selected papers will be published in Scopus Indexed Processing & Pu
   <a href="#fee" onclick="toggleMenu()">Conference Fee</a>
   <a href="#guidelines" onclick="toggleMenu()">Guidelines & Puclication</a>
   <!-- <a href="#publication" onclick="toggleMenu()">Publication</a> -->
-  <a href="#submit" onclick="toggleMenu()">Paper Submission</a>
+  <a href="#submit" onclick="toggleMenu()">Paper / Poster Submission</a>
   <a href="#contact" onclick="toggleMenu()">Contact</a>
   <!-- <a href="images/brochure.pdf" download>Download Brochure</a> -->
 </div>
@@ -1263,12 +1263,16 @@ Additional <b>₹ 500</b> will be charged for extra authors participating in
 <!-- SUBMISSION FORM -->
 <section id="submit">
   <div class="container glass">
-    <h2>Paper Submission</h2>
+    <h2>Paper / Poster Submission</h2>
 
     <form id="paperForm">
       <input name="author" placeholder="Corresponding Author Name" required>
 
-     
+      <select name="submissionType" id="submissionType" required>
+        <option value="" disabled selected>Select Submission Type</option>
+        <option value="Paper">Paper</option>
+        <option value="Poster">Poster</option>
+      </select>
 
       <select name="track" required>
         <option value="" disabled selected>Select Your Track</option>
@@ -1285,13 +1289,12 @@ Additional <b>₹ 500</b> will be charged for extra authors participating in
       <input name="whatsapp" placeholder="WhatsApp Number" required>
       <select name="country" id="country" required></select>
 
-      <input type="file" name="paper" class="dark-file" accept=".doc,.docx" required>
+      <input type="file" name="paper" class="dark-file" id="fileInput" required>
 
-      <button type="submit">Submit Paper</button>
+      <button type="submit">Submit</button>
     </form>
   </div>
 </section>
-
 
 <section id="sponsors">
 <div class="container">
@@ -1330,6 +1333,18 @@ Additional <b>₹ 500</b> will be charged for extra authors participating in
 <footer>© 2026 INNOVATE Conference</footer>
 
 <script>
+
+const submissionType = document.getElementById("submissionType");
+const fileInput = document.getElementById("fileInput");
+
+submissionType.addEventListener("change", () => {
+  if (submissionType.value === "Paper") {
+    fileInput.accept = ".doc,.docx";
+  } else if (submissionType.value === "Poster") {
+    fileInput.accept = ".jpg,.jpeg,.png";
+  }
+});
+
 /* SLIDESHOW */
 const slides=["college1.jpg","college2.jpg","college3.jpg"];
 let i=0;
@@ -1354,7 +1369,7 @@ for(let a=65;a<=90;a++){
 /* PAPER ID */
 function genID(){return "INN-2026-"+Math.floor(1000+Math.random()*9000)}
 
-const SCRIPT_URL="https://script.google.com/macros/s/AKfycbzyhLUnWdNRrgX_eTCRSIi8C3tyh8j0nrlot1qagm7W2-duRX8HqUmLgyYAPd6YyOgsTQ/exec";
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbz4oB9goF_hx2ulS90iHqaBhtdFA8YP6w_Qz7lE1vdxBPT0tbdBRsPp2F6ONCA-cidw0w/exec";
 
 document.getElementById("paperForm").addEventListener("submit", e => {
   e.preventDefault();
@@ -1372,6 +1387,7 @@ document.getElementById("paperForm").addEventListener("submit", e => {
       method: "POST",
       body: JSON.stringify({
         paperID: pid,
+        submissionType: form.submissionType.value,
         author: form.author.value,
         country: form.country.value,
         track: form.track.value,
@@ -1388,8 +1404,8 @@ document.getElementById("paperForm").addEventListener("submit", e => {
       pageLoader.style.display = "none";
       alert(
         "Submission Successful!\n\n" +
-        "Your Paper ID: " + pid + "\n\n" +
-        "Please save this Paper ID for future communication."
+        "Your Paper / Poster ID: " + pid + "\n\n" +
+        "Please save this ID for future communication."
       );
       form.reset(); // CLEAR FORM
     })
@@ -1412,7 +1428,7 @@ function toggleMenu(){
 <!-- FULL PAGE LOADER -->
 <div id="pageLoader">
   <div class="loader-circle"></div>
-  <div class="loader-text">Submitting your paper...</div>
+  <div class="loader-text">Submitting ...</div>
 </div>
 
 <div id="trackModal" style="
@@ -1547,18 +1563,3 @@ setInterval(() => {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
