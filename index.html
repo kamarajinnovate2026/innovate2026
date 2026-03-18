@@ -654,7 +654,93 @@ a[download]:hover{
     0 0 45px rgba(34,197,94,0.4);
 }
 
+/* ===============================
+   PUBLICATION BUTTON – PREMIUM
+================================ */
 
+/* ===============================
+   CENTER ALIGN WRAPPER
+================================ */
+.pub-btn-wrapper{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-top:25px;
+}
+
+/* ===============================
+   PREMIUM PUBLICATION BUTTON
+================================ */
+.pub-btn{
+  display:inline-block;
+  padding:16px 36px;
+  font-size:17px;
+  font-weight:700;
+  border-radius:50px;
+  background:linear-gradient(90deg,#38bdf8,#22c55e);
+  color:#000;
+  position:relative;
+  overflow:hidden;
+  letter-spacing:0.6px;
+  transition:0.4s ease;
+  box-shadow:
+    0 0 20px rgba(56,189,248,0.7),
+    0 0 40px rgba(34,197,94,0.5);
+}
+
+/* ✨ Moving Shine Effect */
+.pub-btn::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:120%;
+  height:100%;
+  background:linear-gradient(120deg,
+    transparent,
+    rgba(255,255,255,0.9),
+    transparent);
+  transform:skewX(-25deg);
+  animation:shineMove 3s infinite;
+}
+
+@keyframes shineMove{
+  0%{ left:-120%; }
+  50%{ left:120%; }
+  100%{ left:120%; }
+}
+
+/* 🔥 Pulse Glow Animation */
+.pub-btn{
+  animation:pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow{
+  0%{
+    box-shadow:
+      0 0 15px rgba(56,189,248,0.6),
+      0 0 30px rgba(34,197,94,0.4);
+  }
+  50%{
+    box-shadow:
+      0 0 30px rgba(56,189,248,1),
+      0 0 60px rgba(34,197,94,0.8);
+  }
+  100%{
+    box-shadow:
+      0 0 15px rgba(56,189,248,0.6),
+      0 0 30px rgba(34,197,94,0.4);
+  }
+}
+
+/* 🚀 Hover Effect */
+.pub-btn:hover{
+  transform:translateY(-5px) scale(1.08);
+  box-shadow:
+    0 0 40px rgba(56,189,248,1),
+    0 0 80px rgba(34,197,94,1);
+}
 /* ===============================
    CONFERENCE FEE TABLE GLOW
 ================================ */
@@ -833,6 +919,12 @@ Organizes<br>
 <h1>(INNOVATE 2026)</h1>
 <br>24 April 2026 | Hybrid Mode
 </section>
+<!-- 🔽 PUBLICATION BUTTON (CENTERED + PREMIUM) -->
+<div class="pub-btn-wrapper">
+  <a href="#publication" class="pub-btn">
+    📄 Explore Publication Details
+  </a>
+</div>
 
 <section style="padding:40px 16px">
 <div class="container">
